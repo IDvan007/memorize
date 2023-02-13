@@ -23,12 +23,13 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
+    var textgame = 'Memorize game';
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Memorize game'),
+        title: Text(textgame),
       ),
-      body: const Center(
-        child: Text('Memorize game'),
+      body: Center(
+        child: Text(textgame),
       ),
     );
   }
