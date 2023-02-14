@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class MyHomePage extends StatelessWidget {
-  static const textgame = 'Memorize game';
+  static const textgame = 'title';
 
   const MyHomePage({super.key});
 
