@@ -6,6 +6,7 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
@@ -16,13 +17,8 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatelessWidget {
   static const textgame = 'Memorize game';
+
   const MyHomePage({super.key});
-
-//  @override
-  // State<MyHomePage> createState() => _MyHomePageState();
-// }
-
-//class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
@@ -35,5 +31,4 @@ class MyHomePage extends StatelessWidget {
       ),
     );
   }
-
 }
