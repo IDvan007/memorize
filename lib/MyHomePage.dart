@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class MyHomePage extends StatelessWidget {
-  static const textgame = 'title';
+  static const title = 'Memorize game';
 
   const MyHomePage({super.key});
 
@@ -9,10 +9,10 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(textgame),
+        title: const Text(title),
       ),
       body: const Center(
-        child: Text(textgame),
+        child: Text(title),
       ),
     );
   }
