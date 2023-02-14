@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:memorize/home_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,24 +12,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       home: MyHomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatelessWidget {
-  static const textgame = 'Memorize game';
-
-  const MyHomePage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text(textgame),
-      ),
-      body: const Center(
-        child: Text(textgame),
-      ),
     );
   }
 }
