@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:memorize/MyHomePage.dart';
+import 'package:memorize/home_page.dart';
 
 void main() {
   runApp(const MyApp());
