@@ -16,6 +16,7 @@ class MyHomePage extends StatelessWidget {
         children: [
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               MyIcon(),
               MgBox(),
@@ -23,6 +24,7 @@ class MyHomePage extends StatelessWidget {
           ),
           Row(
             crossAxisAlignment: CrossAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               MgBox(),
               MyIcon(),
