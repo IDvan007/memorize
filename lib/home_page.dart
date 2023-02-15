@@ -11,13 +11,18 @@ class MyHomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text(title),
       ),
-      body: Center(
-        child: Column(
+      body: Container(
+          child: Column(
+          //crossAxisAlignment: CrossAxisAlignment.start,
+          //mainAxisSize: MainAxisSize.min,
+          //padding: EdgeInsets.all(16.0),
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Row(
+              //mainAxisSize: MainAxisSize.max,
+              //mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 _MyIcon(),
                 _MgBox(),
@@ -25,7 +30,7 @@ class MyHomePage extends StatelessWidget {
             ),
             Row(
               crossAxisAlignment: CrossAxisAlignment.end,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 _MgBox(),
                 _MyIcon(),
