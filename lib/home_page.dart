@@ -52,7 +52,7 @@ class _MyIcon extends StatelessWidget {
         borderRadius: BorderRadius.circular(12),
       ),
       child: const Icon(
-        Icons.lightbulb,
+        Icons.rocket_launch_outlined,
         color: Colors.green,
         size: 32.0,
       ),
