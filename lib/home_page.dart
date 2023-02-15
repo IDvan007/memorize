@@ -11,26 +11,27 @@ class MyHomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text(title),
       ),
-      body: Container(
-          child: Column(
+      body: Center(
+          child: Row(
           //crossAxisAlignment: CrossAxisAlignment.start,
           //mainAxisSize: MainAxisSize.min,
           //padding: EdgeInsets.all(16.0),
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Row(
-              //mainAxisSize: MainAxisSize.max,
+            Column(
+              mainAxisSize: MainAxisSize.min,
               //mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 _MyIcon(),
                 _MgBox(),
               ],
             ),
-            Row(
+            Column(
+              mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.end,
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 _MgBox(),
                 _MyIcon(),
