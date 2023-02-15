@@ -12,32 +12,33 @@ class MyHomePage extends StatelessWidget {
         title: const Text(title),
       ),
       body: Center(
-      child: Column(
-        children: [
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              MyIcon(),
-              MgBox(),
-            ],
-          ),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              MgBox(),
-              MyIcon(),
-            ],
-          ),
-        ],
-      ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                _MyIcon(),
+                _MgBox(),
+              ],
+            ),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                _MgBox(),
+                _MyIcon(),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
 }
 
-class MyIcon extends StatelessWidget {
+class _MyIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -57,7 +58,7 @@ class MyIcon extends StatelessWidget {
   }
 }
 
-class MgBox extends StatelessWidget {
+class _MgBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -66,7 +67,7 @@ class MgBox extends StatelessWidget {
         border: Border.all(width: 3, color: Colors.blue),
         borderRadius: BorderRadius.circular(12),
       ),
-      child: Padding(
+      child: const Padding(
         padding: EdgeInsets.all(16.0),
         child: Text(
           'Memorize game',
