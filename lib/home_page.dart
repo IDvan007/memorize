@@ -18,24 +18,18 @@ class MyHomePage extends StatelessWidget {
             Row(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 _MyIcon(),
-                const SizedBox(
-                  width: 30.0,
-                ),
+                const SizedBox(width: 30.0),
                 _MgBox(),
               ],
             ),
             Row(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.end,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 _MgBox(),
-                const SizedBox(
-                  width: 30.0,
-                ),
+                const SizedBox(width: 30.0),
                 _MyIcon(),
               ],
             ),
