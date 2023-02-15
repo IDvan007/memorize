@@ -24,7 +24,10 @@ class MyHomePage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                _MyIcon(),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0,0,0,30.0),
+                  child: _MyIcon(),
+                ),
                 _MgBox(),
               ],
             ),
@@ -34,6 +37,8 @@ class MyHomePage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 _MgBox(),
+                const SizedBox(width: 30.0,
+                  height: 30.0,),
                 _MyIcon(),
               ],
             ),
