@@ -12,26 +12,25 @@ class MyHomePage extends StatelessWidget {
         title: const Text(title),
       ),
       body: Center(
-          child: Row(
+          child: Column(
           //crossAxisAlignment: CrossAxisAlignment.start,
           //mainAxisSize: MainAxisSize.min,
           //padding: EdgeInsets.all(16.0),
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Column(
+            Row(
               mainAxisSize: MainAxisSize.min,
               //mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(0,0,0,30.0),
-                  child: _MyIcon(),
-                ),
+                _MyIcon(),
+                const SizedBox(width: 30.0,
+                  height: 30.0,),
                 _MgBox(),
               ],
             ),
-            Column(
+            Row(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.end,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
