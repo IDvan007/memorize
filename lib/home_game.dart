@@ -16,11 +16,15 @@ class MyHomeGame extends StatelessWidget {
             border: Border.all(width: 3, color: Colors.blue),
             borderRadius: BorderRadius.circular(12),
           ),
-          child: const Icon(
+          /*child: const Icon(
           Icons.rocket_launch_outlined,
           color: Colors.green,
           size: 64.0,
+        ),*/
+        child:const  Center(
+          child: Text('\u{1F680} '),
         ),
+          //Text('\u{1F680} '),
       ),
     );
   }
