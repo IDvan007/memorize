@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-//import 'package:memorize/home_page.dart';
 import 'package:memorize/home_game.dart';
 
 void main() {

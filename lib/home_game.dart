@@ -7,16 +7,20 @@ class MyHomeGame extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-      // color: Colors.yellow,
-        border: Border.all(width: 3, color: Colors.blue),
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: const Icon(
-        Icons.rocket_launch_outlined,
-        color: Colors.green,
-        size: 64.0,
+    return
+      Padding(
+        padding: const  EdgeInsets.fromLTRB(5,40.0,5,5),
+        child:Container(
+          decoration: BoxDecoration(
+            // color: Colors.yellow,
+            border: Border.all(width: 3, color: Colors.blue),
+            borderRadius: BorderRadius.circular(12),
+          ),
+          child: const Icon(
+          Icons.rocket_launch_outlined,
+          color: Colors.green,
+          size: 64.0,
+        ),
       ),
     );
   }
