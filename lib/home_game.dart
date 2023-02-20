@@ -8,7 +8,6 @@ class MyHomeGame extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         minimum: const EdgeInsets.all(4),
-        child: Container(
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
@@ -19,7 +18,6 @@ class MyHomeGame extends StatelessWidget {
             ],
           ),
         ),
-      ),
     );
   }
 }
