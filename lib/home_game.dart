@@ -6,8 +6,7 @@ class MyHomeGame extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: SafeArea(
+      body: SafeArea(
           minimum: const EdgeInsets.all(4),
           child: Container(
             decoration: BoxDecoration(
@@ -16,12 +15,10 @@ class MyHomeGame extends StatelessWidget {
               borderRadius: BorderRadius.circular(12),
             ),
             child: const Center(
-              child: Text('\u{1F680} ',style: TextStyle(fontSize: 60),
-              ),
+              child: Text('\u{1F680} ',style: TextStyle(fontSize: 60),),
             ),
           ),
         ),
-      ),
     );
   }
 }
