@@ -7,8 +7,8 @@ class MyHomeGame extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(5,40,5,5,),
+        child: SafeArea(
+          minimum: const EdgeInsets.all(4),
           child: Container(
             decoration: BoxDecoration(
               color: Colors.white,
@@ -16,7 +16,8 @@ class MyHomeGame extends StatelessWidget {
               borderRadius: BorderRadius.circular(12),
             ),
             child: const Center(
-              child: Text('\u{1F680} ', style: TextStyle( fontSize: 60),),
+              child: Text('\u{1F680} ',style: TextStyle(fontSize: 60),
+              ),
             ),
           ),
         ),
