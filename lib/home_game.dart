@@ -10,11 +10,11 @@ class MyHomeGame extends StatelessWidget {
         minimum: const EdgeInsets.all(4),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            _MyCard(myIcon: '\u{1F680}'),//Rocket
-            _MyCard(myIcon: '\u{1F681}'),//Helicopter
-            _MyCard(myIcon: '\u{1F68C}'),//Bus
-            _MyCard(myIcon: '\u{1F682}'),//Locomotive
+          children: const [
+            _MyCard(myIcon: '\u{1F680}'), //Rocket
+            _MyCard(myIcon: '\u{1F681}'), //Helicopter
+            _MyCard(myIcon: '\u{1F68C}'), //Bus
+            _MyCard(myIcon: '\u{1F682}'), //Locomotive
           ],
         ),
       ),
@@ -22,11 +22,10 @@ class MyHomeGame extends StatelessWidget {
   }
 }
 
-// ignore: must_be_immutable
 class _MyCard extends StatelessWidget {
-  String myIcon = '\u{1F680}';
+  final String myIcon;
 
-  _MyCard({required this.myIcon});
+  const _MyCard({required this.myIcon});
 
   @override
   Widget build(BuildContext context) {
