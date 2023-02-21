@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:memorize/my_card.dart';
 
 class MyHomeGame extends StatelessWidget {
-   const MyHomeGame({super.key});
+  const MyHomeGame({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -10,7 +10,6 @@ class MyHomeGame extends StatelessWidget {
       body: SafeArea(
         minimum: const EdgeInsets.all(4),
         child: Row(
-          //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: const [
             Expanded(child: MyCard(myIcon: '\u{1F680}')), //Rocket
             SizedBox(width: 10.0),
@@ -25,4 +24,3 @@ class MyHomeGame extends StatelessWidget {
     );
   }
 }
-

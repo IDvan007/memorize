@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class MyCard extends StatelessWidget {
   final String myIcon;
+
   const MyCard({super.key, required this.myIcon});
 
   @override
