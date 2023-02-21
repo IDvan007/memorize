@@ -8,20 +8,21 @@ class MyHomeGame extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         minimum: const EdgeInsets.all(4),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              _MyCard(myIcon: '\u{1F680}'),
-              _MyCard(myIcon: '\u{1F681}'),
-              _MyCard(myIcon: '\u{1F68C}'),
-              _MyCard(myIcon: '\u{1F682}'),
-            ],
-          ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            _MyCard(myIcon: '\u{1F680}'),//Rocket
+            _MyCard(myIcon: '\u{1F681}'),//Helicopter
+            _MyCard(myIcon: '\u{1F68C}'),//Bus
+            _MyCard(myIcon: '\u{1F682}'),//Locomotive
+          ],
         ),
+      ),
     );
   }
 }
 
+// ignore: must_be_immutable
 class _MyCard extends StatelessWidget {
   String myIcon = '\u{1F680}';
 
@@ -30,7 +31,7 @@ class _MyCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(0, 16, 0, 16),
+      padding: const EdgeInsets.only(top: 16, bottom: 16),
       child: Container(
         decoration: BoxDecoration(
           color: Colors.white,
@@ -38,10 +39,7 @@ class _MyCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(12),
         ),
         child: Align(
-          child: Text(
-            myIcon,
-            style: const TextStyle(fontSize: 50),
-          ),
+          child: Text(myIcon, style: const TextStyle(fontSize: 50)),
         ),
       ),
     );
