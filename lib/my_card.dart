@@ -1,19 +1,28 @@
 import 'package:flutter/material.dart';
 
-class MyCard extends StatelessWidget {
+class MyCard extends StatefulWidget {
+  final String myIcon;
+
   const MyCard({
     super.key,
-    this.active = false,
-    required this.onChanged,
     required this.myIcon,
   });
 
-  final bool active;
-  final ValueChanged<bool> onChanged;
-  final String myIcon;
+ String get getIcon  {
+    return myIcon;
+  }
+
+  @override
+  State<MyCard> createState() => MyCardState();
+}
+
+class MyCardState extends State<MyCard> {
+  bool _active = false;
 
   void _handleTap() {
-    onChanged(!active);
+    setState(() {
+      _active = !_active;
+    });
   }
 
   @override
@@ -24,12 +33,13 @@ class MyCard extends StatelessWidget {
         padding: const EdgeInsets.only(top: 16, bottom: 16),
         child: Container(
           decoration: BoxDecoration(
-            color: active ? Colors.blue : Colors.white,
+            color: _active ? Colors.blue : Colors.white,
             border: Border.all(width: 3, color: Colors.blue),
             borderRadius: BorderRadius.circular(12),
           ),
           child: Align(
-            child: Text(active ? '': myIcon, style: const TextStyle(fontSize: 50)),
+            child: Text(_active ? '' : MyCard.getIcon,
+                style: const TextStyle(fontSize: 50)),
           ),
         ),
       ),
