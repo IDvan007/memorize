@@ -7,7 +7,12 @@ class MyCard extends StatelessWidget {
   const MyCard({
     super.key,
     required this.myIcon,
+    mIcon = myIcon;
   });
+
+  onCreate() {
+    mIcon = myIcon;
+  }
 
   @override
   Widget build(BuildContext context) {
