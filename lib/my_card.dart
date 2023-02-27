@@ -38,7 +38,7 @@ class MyCardState extends State<MyCard> {
             borderRadius: BorderRadius.circular(12),
           ),
           child: Align(
-            child: Text(_active ? '' : MyCard.getIcon,
+            child: Text(_active ? '' : Scaffold.of(context).,
                 style: const TextStyle(fontSize: 50)),
           ),
         ),
