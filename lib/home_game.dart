@@ -11,13 +11,13 @@ class MyHomeGame extends StatelessWidget {
       body: SafeArea(
         minimum: const EdgeInsets.all(4),
         child: Row(
-          children: const [
+          children: [
             Expanded(child: MyCard(myIcon: '\u{1F680}')), //Rocket
-            SizedBox(width: 10.0),
+            const SizedBox(width: 10.0),
             Expanded(child: MyCard(myIcon: '\u{1F681}')), //Helicopter
-            SizedBox(width: 10.0),
+            const SizedBox(width: 10.0),
             Expanded(child: MyCard(myIcon: '\u{1F68C}')), //Bus
-            SizedBox(width: 10.0),
+            const SizedBox(width: 10.0),
             Expanded(child: MyCard(myIcon: '\u{1F682}')), //Locomotive
           ],
         ),
