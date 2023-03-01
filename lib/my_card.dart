@@ -30,12 +30,12 @@ class _MyCardState extends State<MyCard> {
         child: Container(
           decoration: BoxDecoration(
             color: _active ? Colors.blue : Colors.white,
-            border: Border.all(width: 3, color: Colors.blue),
+            border: Border.all(width: 3, color: Colors.red),
             borderRadius: BorderRadius.circular(12),
           ),
           child: Align(
             child: Text(_active ? '' : widget.myIcon,
-                style: const TextStyle(fontSize: 50)),
+                style: const TextStyle(fontSize: 25)),
           ),
         ),
       ),
