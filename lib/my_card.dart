@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 class MyCard extends StatefulWidget {
   final String myIcon;
-  static  String  mIcon ='\u{1F680}';
 
   const MyCard({
     super.key,
@@ -10,12 +9,10 @@ class MyCard extends StatefulWidget {
   });
 
   @override
-  State<MyCard> createState() => MyCardState();
-
-
+  State<MyCard> createState() => _MyCardState();
 }
 
-class MyCardState extends State<MyCard> {
+class _MyCardState extends State<MyCard> {
   bool _active = false;
 
   void _handleTap() {
@@ -33,12 +30,12 @@ class MyCardState extends State<MyCard> {
         child: Container(
           decoration: BoxDecoration(
             color: _active ? Colors.blue : Colors.white,
-            border: Border.all(width: 3, color: Colors.blue),
+            border: Border.all(width: 3, color: Colors.red),
             borderRadius: BorderRadius.circular(12),
           ),
           child: Align(
-            child: Text(_active ? '' : MyCard.mIcon,
-                style: const TextStyle(fontSize: 50)),
+            child: Text(_active ? '' : widget.myIcon,
+                style: const TextStyle(fontSize: 25)),
           ),
         ),
       ),
