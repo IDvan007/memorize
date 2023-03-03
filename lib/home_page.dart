@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 class MyHomePage extends StatelessWidget {
   static const title = 'Memorize game';
 
-  const MyHomePage({super.key});
+
+  MyHomePage({super.key});
 
   @override
   Widget build(BuildContext context) {

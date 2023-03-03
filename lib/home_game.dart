@@ -1,13 +1,12 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:memorize/button.dart';
 import 'package:memorize/my_card.dart';
 
 class MyHomeGame extends StatefulWidget {
-  const MyHomeGame({super.key});
+  MyHomeGame({super.key});
 
-  static const iconList = <String>[
+  final iconList = <String>[
     '\u{1F680}',
     '\u{1F681}',
     '\u{1F68C}',
@@ -41,140 +40,100 @@ class MyHomeGame extends StatefulWidget {
 
 class _MyHomeGameState extends State<MyHomeGame> {
   Random myRand = Random();
+  int tempCounter = 0;
+  static int myCardPerRow = 4;
+  static int myCounter = 8;
+
+  void _incrementCounter() {
+    setState(() {
+      myCounter++;
+    });
+  }
+
+  void _decrementCounter() {
+    setState(() {
+      myCounter--;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
         minimum: const EdgeInsets.all(4),
-        child: Column(children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
-              Text('Memorize!',
-                  style: TextStyle(fontSize: 28, fontWeight: FontWeight.w800),
-                  textAlign: TextAlign.justify)
-            ],
-          ),
-          Expanded(
-            child: Row(
-              children: [
-                Expanded(
-                    child: MyCard(
-                        myIcon: MyHomeGame.iconList[
-                        myRand.nextInt(MyHomeGame.iconList.length - 1)])),
-                const SizedBox(width: 10.0),
-                Expanded(
-                    child: MyCard(
-                        myIcon: MyHomeGame.iconList[
-                        myRand.nextInt(MyHomeGame.iconList.length - 1)])),
-                const SizedBox(width: 10.0),
-                Expanded(
-                    child: MyCard(
-                        myIcon: MyHomeGame.iconList[
-                        myRand.nextInt(MyHomeGame.iconList.length - 1)])),
-                const SizedBox(width: 10.0),
-                Expanded(
-                    child: MyCard(
-                        myIcon: MyHomeGame.iconList[
-                        myRand.nextInt(MyHomeGame.iconList.length - 1)])),
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: const [
+                Text('Memorize!',
+                    style: TextStyle(fontSize: 28, fontWeight: FontWeight.w800),
+                    textAlign: TextAlign.justify)
               ],
             ),
-          ),
-          Expanded(
-            child: Row(
-              children: [
-                Expanded(
-                    child: MyCard(
-                        myIcon: MyHomeGame.iconList[
-                        myRand.nextInt(MyHomeGame.iconList.length - 1)])),
-                const SizedBox(width: 10.0),
-                Expanded(
-                    child: MyCard(
-                        myIcon: MyHomeGame.iconList[
-                        myRand.nextInt(MyHomeGame.iconList.length - 1)])),
-                const SizedBox(width: 10.0),
-                Expanded(
-                    child: MyCard(
-                        myIcon: MyHomeGame.iconList[
-                        myRand.nextInt(MyHomeGame.iconList.length - 1)])),
-                const SizedBox(width: 10.0),
-                Expanded(
-                    child: MyCard(
-                        myIcon: MyHomeGame.iconList[
-                        myRand.nextInt(MyHomeGame.iconList.length - 1)])),
-              ],
-            ),
-          ),
-          Expanded(
-            child: Row(
-              children: [
-                Expanded(
-                    child: MyCard(
-                        myIcon: MyHomeGame.iconList[
-                        myRand.nextInt(MyHomeGame.iconList.length - 1)])),
-                const SizedBox(width: 10.0),
-                Expanded(
-                    child: MyCard(
-                        myIcon: MyHomeGame.iconList[
-                        myRand.nextInt(MyHomeGame.iconList.length - 1)])),
-                const SizedBox(width: 10.0),
-                Expanded(
-                    child: MyCard(
-                        myIcon: MyHomeGame.iconList[
-                        myRand.nextInt(MyHomeGame.iconList.length - 1)])),
-                const SizedBox(width: 10.0),
-                Expanded(
-                    child: MyCard(
-                        myIcon: MyHomeGame.iconList[
-                        myRand.nextInt(MyHomeGame.iconList.length - 1)])),
-              ],
-            ),
-          ),
-          Expanded(
-            child: Row(
-              children: [
-                Expanded(
-                    child: MyCard(
-                        myIcon: MyHomeGame.iconList[
-                        myRand.nextInt(MyHomeGame.iconList.length - 1)])),
-                const SizedBox(width: 10.0),
-                Expanded(
-                    child: MyCard(
-                        myIcon: MyHomeGame.iconList[
-                        myRand.nextInt(MyHomeGame.iconList.length - 1)])),
-                const SizedBox(width: 10.0),
-                Expanded(
-                    child: MyCard(
-                        myIcon: MyHomeGame.iconList[
-                        myRand.nextInt(MyHomeGame.iconList.length - 1)])),
-                const SizedBox(width: 10.0),
-                Expanded(
-                    child: MyCard(
-                        myIcon: MyHomeGame.iconList[
-                        myRand.nextInt(MyHomeGame.iconList.length - 1)])),
-              ],
-            ),
-          ),
-          Row(
-            mainAxisSize: MainAxisSize.min,
-            children: const [
-              SizedBox(width: 10.0),
-              MyButton(minusPlus: '-'),
-              SizedBox(width: 10.0),
+            for (int j = 0; j <= (myCounter / myCardPerRow).floor() - 1; j++)
               Expanded(
-                  child: Text('Shuffle',
-                      style: TextStyle(
-                          color: Colors.blue,
-                          fontSize: 28,
-                          fontWeight: FontWeight.w800),
-                      textAlign: TextAlign.center)),
-              SizedBox(width: 10.0),
-              MyButton(minusPlus: '+'),
-              SizedBox(width: 10.0),
-            ],
-          ),
-        ]),
+                  child: Row(children: [
+                for (int i = 0; i <= myCardPerRow - 1; i++)
+                  Expanded(
+                    child: MyCard(myIcon: widget.iconList[i]),
+                  )
+              ])),
+            if ((myCounter / myCardPerRow) !=
+                (myCounter / myCardPerRow).floor())
+              Expanded(
+                  child: Row(children: [
+                for (int i = 0;
+                    i <=
+                        myCounter -
+                            ((myCounter / myCardPerRow).floor() *
+                                myCardPerRow) -
+                            1;
+                    i++)
+                  Expanded(child: MyCard(myIcon: widget.iconList[i])),
+              ])),
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.blue, width: 4),
+                    color: Colors.white,
+                    shape: BoxShape.circle,
+                  ),
+                  child: FloatingActionButton(
+                    backgroundColor: Colors.white,
+                    child: const Text('-',
+                        style: TextStyle(color: Colors.blue, fontSize: 36)),
+                    onPressed: () => {_decrementCounter()},
+                  ),
+                ),
+                const SizedBox(width: 10.0),
+                const Expanded(
+                    child: Text('Shuffle',
+                        style: TextStyle(
+                            color: Colors.blue,
+                            fontSize: 28,
+                            fontWeight: FontWeight.w800),
+                        textAlign: TextAlign.center)),
+                const SizedBox(width: 10.0),
+                Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.blue, width: 4),
+                    color: Colors.white,
+                    shape: BoxShape.circle,
+                  ),
+                  child: FloatingActionButton(
+                    backgroundColor: Colors.white,
+                    child: const Text('+',
+                        style: TextStyle(color: Colors.blue, fontSize: 36)),
+                    onPressed: () => {_incrementCounter()},
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
