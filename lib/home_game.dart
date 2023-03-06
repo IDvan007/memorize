@@ -4,9 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:memorize/my_card.dart';
 
 class MyHomeGame extends StatefulWidget {
-  MyHomeGame({super.key});
+  const MyHomeGame({super.key});
 
-  final iconList = <String>[
+  static var myContainers = [];
+  static int myCounter = 8;
+
+  static const List<String> iconList = [
     '\u{1F680}',
     '\u{1F681}',
     '\u{1F68C}',
@@ -41,18 +44,19 @@ class MyHomeGame extends StatefulWidget {
 class _MyHomeGameState extends State<MyHomeGame> {
   Random myRand = Random();
   int tempCounter = 0;
-  static int myCardPerRow = 4;
-  static int myCounter = 8;
 
   void _incrementCounter() {
     setState(() {
-      myCounter++;
+      MyHomeGame.myContainers
+          .add(MyCard(myIcon: MyHomeGame.iconList[MyHomeGame.myCounter + 1]));
+      MyHomeGame.myCounter++;
     });
   }
 
   void _decrementCounter() {
     setState(() {
-      myCounter--;
+      MyHomeGame.myContainers.removeLast();
+      MyHomeGame.myCounter--;
     });
   }
 
@@ -63,35 +67,23 @@ class _MyHomeGameState extends State<MyHomeGame> {
         minimum: const EdgeInsets.all(4),
         child: Column(
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
-                Text('Memorize!',
-                    style: TextStyle(fontSize: 28, fontWeight: FontWeight.w800),
-                    textAlign: TextAlign.justify)
-              ],
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: const [
+              Text('Memorize!',
+                  style: TextStyle(fontSize: 28, fontWeight: FontWeight.w800),
+                  textAlign: TextAlign.justify)
+            ]),
+            Expanded(
+              child: GridView.builder(
+                itemCount: MyHomeGame.myContainers.length,
+                itemBuilder: (context, index) => MyHomeGame.myContainers[index],
+                gridDelegate:  const  SliverGridDelegateWithMaxCrossAxisExtent(
+                    maxCrossAxisExtent: 100,
+                    childAspectRatio: 1 / 2,
+                    crossAxisSpacing: 20,
+                   // mainAxisSpacing: 20
+                  ),
+              ),
             ),
-            for (int j = 0; j <= (myCounter / myCardPerRow).floor() - 1; j++)
-              Expanded(
-                  child: Row(children: [
-                for (int i = 0; i <= myCardPerRow - 1; i++)
-                  Expanded(
-                    child: MyCard(myIcon: widget.iconList[i]),
-                  )
-              ])),
-            if ((myCounter / myCardPerRow) !=
-                (myCounter / myCardPerRow).floor())
-              Expanded(
-                  child: Row(children: [
-                for (int i = 0;
-                    i <=
-                        myCounter -
-                            ((myCounter / myCardPerRow).floor() *
-                                myCardPerRow) -
-                            1;
-                    i++)
-                  Expanded(child: MyCard(myIcon: widget.iconList[i])),
-              ])),
             Row(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
