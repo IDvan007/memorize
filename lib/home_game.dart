@@ -73,15 +73,13 @@ class _MyHomeGameState extends State<MyHomeGame> {
                   textAlign: TextAlign.justify)
             ]),
             Expanded(
-              child: GridView.builder(
-                itemCount: MyHomeGame.myContainers.length,
-                itemBuilder: (context, index) => MyHomeGame.myContainers[index],
-                gridDelegate:  const  SliverGridDelegateWithMaxCrossAxisExtent(
-                    maxCrossAxisExtent: 100,
-                    childAspectRatio: 1 / 2,
-                    crossAxisSpacing: 20,
-                   // mainAxisSpacing: 20
-                  ),
+              child: GridView.count(
+                crossAxisCount:4,
+                  crossAxisSpacing: 10,
+                  childAspectRatio: 1/2,
+                  children:[
+                    for (int i=0; i<MyHomeGame.myContainers.length; i++)  MyHomeGame.myContainers[i],
+                           ]
               ),
             ),
             Row(
