@@ -26,7 +26,7 @@ class _MyCardState extends State<MyCard> {
     return GestureDetector(
       onTap: _handleTap,
       child: Padding(
-        padding: const EdgeInsets.only(top: 16, bottom: 16),
+        padding: const EdgeInsets.only(top: 4, bottom: 4),
         child: Container(
           decoration: BoxDecoration(
             color: _active ? Colors.blue : Colors.white,
