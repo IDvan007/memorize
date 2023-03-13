@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:memorize/my_card.dart';
 
@@ -39,17 +37,13 @@ class MyHomeGame extends StatefulWidget {
 }
 
 class _MyHomeGameState extends State<MyHomeGame> {
-  Random myRand = Random();
-  int tempCounter = 0;
-  MyCard tempContainer = const MyCard(myIcon: ' ');
   List<MyCard> myContainers = [];
   int myCounter = 8;
 
   void myInitCards() {
     myContainers.clear();
     for (int i = 0; i < myCounter; i++) {
-      tempContainer = MyCard(myIcon: MyHomeGame.iconList[i]);
-      myContainers.add(tempContainer);
+      myContainers.add(MyCard(myIcon: MyHomeGame.iconList[i]));
     }
   }
 
@@ -84,66 +78,64 @@ class _MyHomeGameState extends State<MyHomeGame> {
             textAlign: TextAlign.center),
         backgroundColor: Colors.white,
       ),
-      body: Padding(
-        padding: const EdgeInsets.only(left: 4, right: 4),
-        child: Center(
-          child: Expanded(
-            child: Container(
-              color: Colors.white,
-              child: GridView.count(
-                  crossAxisCount: 4,
-                  crossAxisSpacing: 8,
-                  childAspectRatio: 1 / 2,
-                  children: [
-                    for (int i = 0; i < myContainers.length; i++)
-                      myContainers[i],
-                  ]),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                GridView.count(
+                    crossAxisCount: 4,
+                    crossAxisSpacing: 8,
+                    childAspectRatio: 1 / 2,
+                    children: [
+                      for (int i = 0; i < myContainers.length; i++)
+                        myContainers[i],
+                    ]),
+              ],
             ),
-          ),
-        ),
-      ),
-      bottomNavigationBar: BottomAppBar(
-        //shape: const CircularNotchedRectangle(),
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Container(
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.blue, width: 4),
-                  color: Colors.white,
-                  shape: BoxShape.circle,
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.blue, width: 4),
+                    color: Colors.white,
+                    shape: BoxShape.circle,
+                  ),
+                  child: IconButton(
+                    icon: const Icon(Icons.remove),
+                    color: Colors.blue,
+                    onPressed: () => {_decrementCounter()},
+                  ),
                 ),
-                child: IconButton(
-                  icon: const Icon(Icons.remove),
-                  color: Colors.blue,
-                  onPressed: () => {_decrementCounter()},
+                const SizedBox(width: 10.0),
+                const Expanded(
+                    child: Text('Shuffle',
+                        style: TextStyle(
+                            color: Colors.blue,
+                            fontSize: 28,
+                            fontWeight: FontWeight.w800),
+                        textAlign: TextAlign.center)),
+                const SizedBox(width: 10.0),
+                Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.blue, width: 4),
+                    color: Colors.white,
+                    shape: BoxShape.circle,
+                  ),
+                  child: IconButton(
+                    icon: const Icon(Icons.add),
+                    color: Colors.blue,
+                    onPressed: () => {_incrementCounter()},
+                  ),
                 ),
-              ),
-              const SizedBox(width: 10.0),
-              const Expanded(
-                  child: Text('Shuffle',
-                      style: TextStyle(
-                          color: Colors.blue,
-                          fontSize: 28,
-                          fontWeight: FontWeight.w800),
-                      textAlign: TextAlign.center)),
-              const SizedBox(width: 10.0),
-              Container(
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.blue, width: 4),
-                  color: Colors.white,
-                  shape: BoxShape.circle,
-                ),
-                child: IconButton(
-                  icon: const Icon(Icons.add),
-                  color: Colors.blue,
-                  onPressed: () => {_incrementCounter()},
-                ),
-              ),
-            ],
-          ),
+              ],
+            ),
+          ],
         ),
       ),
     );
