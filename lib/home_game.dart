@@ -41,7 +41,7 @@ class MyHomeGame extends StatefulWidget {
 class _MyHomeGameState extends State<MyHomeGame> {
   Random myRand = Random();
   int tempCounter = 0;
-  static MyCard tempContainer = const MyCard(myIcon: ' ');
+  MyCard tempContainer = const MyCard(myIcon: ' ');
   List<MyCard> myContainers = [];
   int myCounter = 8;
 
