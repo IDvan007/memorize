@@ -42,12 +42,14 @@ class _MyHomeGameState extends State<MyHomeGame> {
   void _incrementCounter() {
     setState(() {
       myCounter++;
+      if (myCounter > MyHomeGame.iconList.length) myCounter=MyHomeGame.iconList.length;
     });
   }
 
   void _decrementCounter() {
     setState(() {
       myCounter--;
+      if (myCounter < 8 ) myCounter=8;
     });
   }
 
