@@ -82,20 +82,14 @@ class _MyHomeGameState extends State<MyHomeGame> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Row(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                GridView.count(
-                    crossAxisCount: 4,
-                    crossAxisSpacing: 8,
-                    childAspectRatio: 1 / 2,
-                    children: [
-                      for (int i = 0; i < myContainers.length; i++)
-                        myContainers[i],
-                    ]),
-              ],
-            ),
+            GridView.count(
+                crossAxisCount: 4,
+                crossAxisSpacing: 8,
+                childAspectRatio: 1 / 2,
+                children: [
+                  for (int i = 0; i < myContainers.length; i++)
+                    myContainers[i],
+                ]),
             Row(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.end,
