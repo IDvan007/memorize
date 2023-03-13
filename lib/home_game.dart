@@ -37,36 +37,18 @@ class MyHomeGame extends StatefulWidget {
 }
 
 class _MyHomeGameState extends State<MyHomeGame> {
-  List<MyCard> myContainers = [];
   int myCounter = 8;
-
-  void myInitCards() {
-    myContainers.clear();
-    for (int i = 0; i < myCounter; i++) {
-      myContainers.add(MyCard(myIcon: MyHomeGame.iconList[i]));
-    }
-  }
 
   void _incrementCounter() {
     setState(() {
-      myContainers = myContainers.toList();
-      myContainers.add(MyCard(myIcon: MyHomeGame.iconList[myCounter + 1]));
       myCounter++;
     });
   }
 
   void _decrementCounter() {
     setState(() {
-      myContainers = myContainers.toList();
-      myContainers.removeLast();
       myCounter--;
     });
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    myInitCards();
   }
 
   @override
@@ -88,10 +70,14 @@ class _MyHomeGameState extends State<MyHomeGame> {
               child: Padding(
                 padding: const EdgeInsets.only(left: 8, right: 8),
                 child: GridView.count(
-                    crossAxisCount: 4,
-                    crossAxisSpacing: 8,
-                    childAspectRatio: 1 / 2,
-                    children: myContainers),
+                  crossAxisCount: 4,
+                  crossAxisSpacing: 8,
+                  childAspectRatio: 1 / 2,
+                  children: <Widget>[
+                    for (int i = 0; i < myCounter; i++)
+                      MyCard(myIcon: MyHomeGame.iconList[i])
+                  ],
+                ),
               ),
             ),
             Padding(
