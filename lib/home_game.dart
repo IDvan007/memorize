@@ -82,52 +82,60 @@ class _MyHomeGameState extends State<MyHomeGame> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            GridView.count(
-                crossAxisCount: 4,
-                crossAxisSpacing: 8,
-                childAspectRatio: 1 / 2,
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.only(left: 8, right: 8),
+                child: GridView.count(
+                    crossAxisCount: 4,
+                    crossAxisSpacing: 8,
+                    childAspectRatio: 1 / 2,
+                    children: [
+                      for (int i = 0; i < myContainers.length; i++)
+                        myContainers[i],
+                    ]),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 8, right: 8),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  for (int i = 0; i < myContainers.length; i++)
-                    myContainers[i],
-                ]),
-            Row(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.blue, width: 4),
-                    color: Colors.white,
-                    shape: BoxShape.circle,
+                  Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.blue, width: 4),
+                      color: Colors.white,
+                      shape: BoxShape.circle,
+                    ),
+                    child: IconButton(
+                      icon: const Icon(Icons.remove),
+                      color: Colors.blue,
+                      onPressed: () => {_decrementCounter()},
+                    ),
                   ),
-                  child: IconButton(
-                    icon: const Icon(Icons.remove),
-                    color: Colors.blue,
-                    onPressed: () => {_decrementCounter()},
+                  const SizedBox(width: 10.0),
+                  const Expanded(
+                      child: Text('Shuffle',
+                          style: TextStyle(
+                              color: Colors.blue,
+                              fontSize: 28,
+                              fontWeight: FontWeight.w800),
+                          textAlign: TextAlign.center)),
+                  const SizedBox(width: 10.0),
+                  Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.blue, width: 4),
+                      color: Colors.white,
+                      shape: BoxShape.circle,
+                    ),
+                    child: IconButton(
+                      icon: const Icon(Icons.add),
+                      color: Colors.blue,
+                      onPressed: () => {_incrementCounter()},
+                    ),
                   ),
-                ),
-                const SizedBox(width: 10.0),
-                const Expanded(
-                    child: Text('Shuffle',
-                        style: TextStyle(
-                            color: Colors.blue,
-                            fontSize: 28,
-                            fontWeight: FontWeight.w800),
-                        textAlign: TextAlign.center)),
-                const SizedBox(width: 10.0),
-                Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.blue, width: 4),
-                    color: Colors.white,
-                    shape: BoxShape.circle,
-                  ),
-                  child: IconButton(
-                    icon: const Icon(Icons.add),
-                    color: Colors.blue,
-                    onPressed: () => {_incrementCounter()},
-                  ),
-                ),
-              ],
+                ],
+              ),
             ),
           ],
         ),
