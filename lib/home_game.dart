@@ -49,6 +49,7 @@ class _MyHomeGameState extends State<MyHomeGame> {
 
   void _incrementCounter() {
     setState(() {
+      myContainers = myContainers.toList();
       myContainers.add(MyCard(myIcon: MyHomeGame.iconList[myCounter + 1]));
       myCounter++;
     });
@@ -56,6 +57,7 @@ class _MyHomeGameState extends State<MyHomeGame> {
 
   void _decrementCounter() {
     setState(() {
+      myContainers = myContainers.toList();
       myContainers.removeLast();
       myCounter--;
     });
@@ -89,10 +91,7 @@ class _MyHomeGameState extends State<MyHomeGame> {
                     crossAxisCount: 4,
                     crossAxisSpacing: 8,
                     childAspectRatio: 1 / 2,
-                    children: [
-                      for (int i = 0; i < myContainers.length; i++)
-                        myContainers[i],
-                    ]),
+                    children: myContainers),
               ),
             ),
             Padding(
