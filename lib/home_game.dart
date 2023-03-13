@@ -39,20 +39,6 @@ class MyHomeGame extends StatefulWidget {
 class _MyHomeGameState extends State<MyHomeGame> {
   int myCounter = 8;
 
-  void _incrementCounter() {
-    setState(() {
-      myCounter++;
-      if (myCounter > MyHomeGame.iconList.length) myCounter=MyHomeGame.iconList.length;
-    });
-  }
-
-  void _decrementCounter() {
-    setState(() {
-      myCounter--;
-      if (myCounter < 8 ) myCounter=8;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -95,10 +81,13 @@ class _MyHomeGameState extends State<MyHomeGame> {
                       shape: BoxShape.circle,
                     ),
                     child: IconButton(
-                      icon: const Icon(Icons.remove),
-                      color: Colors.blue,
-                      onPressed: () => {_decrementCounter()},
-                    ),
+                        icon: const Icon(Icons.remove),
+                        color: Colors.blue,
+                        onPressed: () {
+                          setState(() {
+                            if (myCounter > 8) {myCounter--;}
+                          });
+                        }),
                   ),
                   const SizedBox(width: 10.0),
                   const Expanded(
@@ -118,7 +107,12 @@ class _MyHomeGameState extends State<MyHomeGame> {
                     child: IconButton(
                       icon: const Icon(Icons.add),
                       color: Colors.blue,
-                      onPressed: () => {_incrementCounter()},
+                      onPressed: () {
+                        setState(() {
+                          if (myCounter < MyHomeGame.iconList.length){
+                            myCounter++;}
+                        });
+                      },
                     ),
                   ),
                 ],
