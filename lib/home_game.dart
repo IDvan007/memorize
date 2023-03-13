@@ -6,9 +6,6 @@ import 'package:memorize/my_card.dart';
 class MyHomeGame extends StatefulWidget {
   const MyHomeGame({super.key});
 
-  static var myContainers = [];
-  static int myCounter = 8;
-
   static const List<String> iconList = [
     '\u{1F680}',
     '\u{1F681}',
@@ -45,27 +42,28 @@ class _MyHomeGameState extends State<MyHomeGame> {
   Random myRand = Random();
   int tempCounter = 0;
   static MyCard tempContainer = const MyCard(myIcon: ' ');
+  List<MyCard> myContainers = [];
+  int myCounter = 8;
 
   void myInitCards() {
-    MyHomeGame.myContainers.clear();
-    for (int i = 0; i < MyHomeGame.myCounter; i++) {
+    myContainers.clear();
+    for (int i = 0; i < myCounter; i++) {
       tempContainer = MyCard(myIcon: MyHomeGame.iconList[i]);
-      MyHomeGame.myContainers.add(tempContainer);
+      myContainers.add(tempContainer);
     }
   }
 
   void _incrementCounter() {
     setState(() {
-      MyHomeGame.myContainers
-          .add(MyCard(myIcon: MyHomeGame.iconList[MyHomeGame.myCounter + 1]));
-      MyHomeGame.myCounter++;
+      myContainers.add(MyCard(myIcon: MyHomeGame.iconList[myCounter + 1]));
+      myCounter++;
     });
   }
 
   void _decrementCounter() {
     setState(() {
-      MyHomeGame.myContainers.removeLast();
-      MyHomeGame.myCounter--;
+      myContainers.removeLast();
+      myCounter--;
     });
   }
 
@@ -97,8 +95,8 @@ class _MyHomeGameState extends State<MyHomeGame> {
                   crossAxisSpacing: 8,
                   childAspectRatio: 1 / 2,
                   children: [
-                    for (int i = 0; i < MyHomeGame.myContainers.length; i++)
-                      MyHomeGame.myContainers[i],
+                    for (int i = 0; i < myContainers.length; i++)
+                      myContainers[i],
                   ]),
             ),
           ),
