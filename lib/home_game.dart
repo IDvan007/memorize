@@ -61,10 +61,10 @@ class _MyHomeGameState extends State<MyHomeGame> {
                   crossAxisCount: 4,
                   crossAxisSpacing: 8,
                   childAspectRatio: 1 / 2,
-                  children: <Widget>[
-                    for (int i = 0; i < myCounter; i++)
-                      MyCard(myIcon: MyHomeGame.iconList[i])
-                  ],
+                  children:MyHomeGame.iconList.map((icon) => MyCard(myIcon: icon)).toList(),
+                   //for (int i = 0; i < myCounter; i++)
+                    //  MyCard(myIcon: MyHomeGame.iconList[i])
+
                 ),
               ),
             ),
