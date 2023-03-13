@@ -106,43 +106,46 @@ class _MyHomeGameState extends State<MyHomeGame> {
       ),
       bottomNavigationBar: BottomAppBar(
         //shape: const CircularNotchedRectangle(),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            Container(
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.blue, width: 4),
-                color: Colors.white,
-                shape: BoxShape.circle,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              Container(
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.blue, width: 4),
+                  color: Colors.white,
+                  shape: BoxShape.circle,
+                ),
+                child: IconButton(
+                  icon: const Icon(Icons.remove),
+                  color: Colors.blue,
+                  onPressed: () => {_decrementCounter()},
+                ),
               ),
-              child: IconButton(
-                icon: const Icon(Icons.remove),
-                color: Colors.blue,
-                onPressed: () => {_decrementCounter()},
+              const SizedBox(width: 10.0),
+              const Expanded(
+                  child: Text('Shuffle',
+                      style: TextStyle(
+                          color: Colors.blue,
+                          fontSize: 28,
+                          fontWeight: FontWeight.w800),
+                      textAlign: TextAlign.center)),
+              const SizedBox(width: 10.0),
+              Container(
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.blue, width: 4),
+                  color: Colors.white,
+                  shape: BoxShape.circle,
+                ),
+                child: IconButton(
+                  icon: const Icon(Icons.add),
+                  color: Colors.blue,
+                  onPressed: () => {_incrementCounter()},
+                ),
               ),
-            ),
-            const SizedBox(width: 10.0),
-            const Expanded(
-                child: Text('Shuffle',
-                    style: TextStyle(
-                        color: Colors.blue,
-                        fontSize: 28,
-                        fontWeight: FontWeight.w800),
-                    textAlign: TextAlign.center)),
-            const SizedBox(width: 10.0),
-            Container(
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.blue, width: 4),
-                color: Colors.white,
-                shape: BoxShape.circle,
-              ),
-              child: IconButton(
-                icon: const Icon(Icons.add),
-                color: Colors.blue,
-                onPressed: () => {_incrementCounter()},
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
