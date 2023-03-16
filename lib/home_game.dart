@@ -3,7 +3,8 @@ import 'package:memorize/my_card.dart';
 
 class MyHomeGame extends StatefulWidget {
   const MyHomeGame({super.key});
-
+  static String card1='';
+  static String card2='';
   static const List<String> iconList = [
     '\u{1F680}',
     '\u{1F681}',
@@ -38,6 +39,18 @@ class MyHomeGame extends StatefulWidget {
 
 class _MyHomeGameState extends State<MyHomeGame> {
   int myCounter = 8;
+  //List <String> cardList = ['\u{1F682}','\u{1F680}','\u{1F681}','\u{1F681}','\u{1F68C}', '\u{1F680}', '\u{1F68C}', '\u{1F682}'];
+  List <String> cardList = [];
+  @override
+  void initState() {
+    for (int i=0; i<myCounter/2; i++){
+      cardList.add(MyHomeGame.iconList[i]);
+      cardList.add(MyHomeGame.iconList[i]);
+    }
+    cardList.shuffle();
+    super.initState();
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -62,64 +75,11 @@ class _MyHomeGameState extends State<MyHomeGame> {
                     crossAxisCount: 4,
                     crossAxisSpacing: 8,
                     childAspectRatio: 2 / 3,
-                    children: MyHomeGame.iconList
+                    children: cardList
                         .take(myCounter)
                         .map((icon) => MyCard(myIcon: icon))
                         .toList(),
                   ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.blue, width: 4),
-                        color: Colors.white,
-                        shape: BoxShape.circle,
-                      ),
-                      child: IconButton(
-                          icon: const Icon(Icons.remove),
-                          color: Colors.blue,
-                          onPressed: () {
-                            setState(() {
-                              if (myCounter > 8) {
-                                myCounter--;
-                              }
-                            });
-                          }),
-                    ),
-                    const SizedBox(width: 10.0),
-                    const Expanded(
-                        child: Text('Shuffle',
-                            style: TextStyle(
-                                color: Colors.blue,
-                                fontSize: 28,
-                                fontWeight: FontWeight.w800),
-                            textAlign: TextAlign.center)),
-                    const SizedBox(width: 10.0),
-                    Container(
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.blue, width: 4),
-                        color: Colors.white,
-                        shape: BoxShape.circle,
-                      ),
-                      child: IconButton(
-                        icon: const Icon(Icons.add),
-                        color: Colors.blue,
-                        onPressed: () {
-                          setState(() {
-                            if (myCounter < MyHomeGame.iconList.length) {
-                              myCounter++;
-                            }
-                          });
-                        },
-                      ),
-                    ),
-                  ],
                 ),
               ),
             ],
