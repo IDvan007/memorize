@@ -60,16 +60,18 @@ class _MyHomeGameState extends State<MyHomeGame> {
                 child: GridView.count(
                   crossAxisCount: 4,
                   crossAxisSpacing: 8,
-                  childAspectRatio: 1 / 2,
-                  children:MyHomeGame.iconList.take(myCounter).map((icon) => MyCard(myIcon: icon)).toList(),
-                   //for (int i = 0; i < myCounter; i++)
-                    //  MyCard(myIcon: MyHomeGame.iconList[i])
-
+                  childAspectRatio: 2 / 3,
+                  children: MyHomeGame.iconList
+                      .take(myCounter)
+                      .map((icon) => MyCard(myIcon: icon))
+                      .toList(),
+                  //for (int i = 0; i < myCounter; i++)
+                  //  MyCard(myIcon: MyHomeGame.iconList[i])
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 8, right: 8),
+            SafeArea(
+              minimum:const EdgeInsets.all(8.0),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.end,
@@ -85,7 +87,9 @@ class _MyHomeGameState extends State<MyHomeGame> {
                         color: Colors.blue,
                         onPressed: () {
                           setState(() {
-                            if (myCounter > 8) {myCounter--;}
+                            if (myCounter > 8) {
+                              myCounter--;
+                            }
                           });
                         }),
                   ),
@@ -109,8 +113,9 @@ class _MyHomeGameState extends State<MyHomeGame> {
                       color: Colors.blue,
                       onPressed: () {
                         setState(() {
-                          if (myCounter < MyHomeGame.iconList.length){
-                            myCounter++;}
+                          if (myCounter < MyHomeGame.iconList.length) {
+                            myCounter++;
+                          }
                         });
                       },
                     ),
