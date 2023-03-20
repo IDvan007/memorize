@@ -3,8 +3,9 @@ import 'package:memorize/my_card.dart';
 
 class MyHomeGame extends StatefulWidget {
   const MyHomeGame({super.key});
-  static String card1='';
-  static String card2='';
+  static MyCard openCard = MyCard(myIcon: ' ', cardPoz: -1);//Position opened first card
+  static List<MyCard> cardList=[];
+  static List <String> cardIcons = []; //shuffled Icons of Cards
   static const List<String> iconList = [
     '\u{1F680}',
     '\u{1F681}',
@@ -39,15 +40,24 @@ class MyHomeGame extends StatefulWidget {
 
 class _MyHomeGameState extends State<MyHomeGame> {
   int myCounter = 8;
-  //List <String> cardList = ['\u{1F682}','\u{1F680}','\u{1F681}','\u{1F681}','\u{1F68C}', '\u{1F680}', '\u{1F68C}', '\u{1F682}'];
-  List <String> cardList = [];
+
+  void _handleTap() {
+    setState(() {
+
+    });
+  }
+
+
   @override
   void initState() {
     for (int i=0; i<myCounter/2; i++){
-      cardList.add(MyHomeGame.iconList[i]);
-      cardList.add(MyHomeGame.iconList[i]);
+      MyHomeGame.cardIcons.add(MyHomeGame.iconList[i]);
+      MyHomeGame.cardIcons.add(MyHomeGame.iconList[i]);
     }
-    cardList.shuffle();
+    MyHomeGame.cardIcons.shuffle();//  shuffle Icons
+    for (int i=0; i<MyHomeGame.cardIcons.length;i++){
+      MyHomeGame.cardList.add(MyCard(myIcon:MyHomeGame.cardIcons[i],cardPoz: i));
+    }
     super.initState();
   }
 
@@ -57,32 +67,34 @@ class _MyHomeGameState extends State<MyHomeGame> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text('Memorize!',
-            style: TextStyle(
+        title: Text(MyHomeGame.openCard.cardPoz.toString(),
+            style: const TextStyle(
                 fontSize: 28, color: Colors.black, fontWeight: FontWeight.w800),
             textAlign: TextAlign.center),
         backgroundColor: Colors.white,
       ),
-      body: SafeArea(
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 8, right: 8),
-                  child: GridView.count(
-                    crossAxisCount: 4,
-                    crossAxisSpacing: 8,
-                    childAspectRatio: 2 / 3,
-                    children: cardList
-                        .take(myCounter)
-                        .map((icon) => MyCard(myIcon: icon))
-                        .toList(),
+      body: GestureDetector(
+        onTap: _handleTap,
+        child: SafeArea(
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 8, right: 8),
+                    child: GridView.count(
+                      crossAxisCount: 4,
+                      crossAxisSpacing: 8,
+                      childAspectRatio: 2 / 3,
+                      children: [
+                        for (int i=0;i<MyHomeGame.cardList.length; i++) MyHomeGame.cardList[i],
+                      ]
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
