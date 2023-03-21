@@ -21,28 +21,34 @@ class MyCard extends StatefulWidget {
 class _MyCardState extends State<MyCard> {
   void _handleTap() {
     setState(() {
-      if (MyHomeGame.openCard.cardPoz == -1) {
-        MyHomeGame.openCard.cardPoz = widget.cardPoz;
-          MyHomeGame.cardList[widget.cardPoz].cardActive = !MyHomeGame.cardList[widget.cardPoz].cardActive;
-      } else {
-        if ((MyHomeGame.cardList[widget.cardPoz].cardVisible) &&
-            (MyHomeGame.cardList[widget.cardPoz].cardPoz !=
-                MyHomeGame.openCard.cardPoz)) {
-                      MyHomeGame.cardList[widget.cardPoz].cardActive = !MyHomeGame.cardList[widget.cardPoz].cardActive;
-                      if (MyHomeGame.cardList[widget.cardPoz].myIcon ==
-                                 MyHomeGame.openCard.myIcon) {
-                                          MyHomeGame.cardList[widget.cardPoz].cardVisible = false;
-                                          MyHomeGame.cardList[MyHomeGame.openCard.cardPoz].cardVisible = false;
-                                           } else {
-                                                  MyHomeGame.cardList[widget.cardPoz].cardActive = false;
-                                                  MyHomeGame.cardList[MyHomeGame.openCard.cardPoz].cardActive = false;
-                                           }
-          MyHomeGame.openCard.cardPoz = -1;
+      print("openCard.cardPoz: ${MyHomeGame.openCard.cardPoz}");
+      if (MyHomeGame.cardList[widget.cardPoz].cardVisible == true) {
+        if (MyHomeGame.openCard.cardPoz == -1) {
+          MyHomeGame.openCard.cardPoz = widget.cardPoz;
+          print("widget.cardPoz: ${widget.cardPoz}");
+          print("openCard.cardPoz: ${MyHomeGame.openCard.cardPoz}");
+          MyHomeGame.cardList[widget.cardPoz].cardActive =
+          !MyHomeGame.cardList[widget.cardPoz].cardActive;
+          print("cardList[${widget.cardPoz}].cardActive: ${MyHomeGame
+              .cardList[widget.cardPoz].cardActive}");
+        } else {
+          if (MyHomeGame.openCard.cardPoz != widget.cardPoz) {
+            MyHomeGame.cardList[widget.cardPoz].cardActive =
+            !MyHomeGame.cardList[widget.cardPoz].cardActive;
+            if (MyHomeGame.cardList[widget.cardPoz].myIcon ==
+                MyHomeGame.cardList[MyHomeGame.openCard.cardPoz].myIcon) {
+              MyHomeGame.cardList[widget.cardPoz].cardVisible = false;
+              MyHomeGame.cardList[MyHomeGame.openCard.cardPoz].cardVisible =
+              false;
+              MyHomeGame.openCard.cardPoz = -1;
+            } else {
+              MyHomeGame.cardList[widget.cardPoz].cardActive = false;
+              MyHomeGame.cardList[MyHomeGame.openCard.cardPoz].cardActive =
+              false;
+            }
+          }
         }
       }
-      MyHomeGame.cardList = MyHomeGame.cardList.toList();
-
-
     });
   }
 
