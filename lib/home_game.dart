@@ -43,7 +43,7 @@ class _MyHomeGameState extends State<MyHomeGame> {
 
   void _handleTap() {
     setState(() {
-
+      print("MyHomeGame was taped!");
     });
   }
 

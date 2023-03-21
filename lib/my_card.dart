@@ -21,6 +21,7 @@ class MyCard extends StatefulWidget {
 class _MyCardState extends State<MyCard> {
   void _handleTap() {
     setState(() {
+      print("Card was taped!");
       print("openCard.cardPoz: ${MyHomeGame.openCard.cardPoz}");
       if (MyHomeGame.cardList[widget.cardPoz].cardVisible == true) {
         if (MyHomeGame.openCard.cardPoz == -1) {
@@ -40,11 +41,18 @@ class _MyCardState extends State<MyCard> {
               MyHomeGame.cardList[widget.cardPoz].cardVisible = false;
               MyHomeGame.cardList[MyHomeGame.openCard.cardPoz].cardVisible =
               false;
+              print("MyHomeGame.cardList[${widget.cardPoz}].myIcon: ${MyHomeGame.cardList[widget.cardPoz].myIcon}");
+              print("MyHomeGame.cardList[${MyHomeGame.openCard.cardPoz}].myIcon: ${MyHomeGame.cardList[MyHomeGame.openCard.cardPoz].myIcon}");
+              print("MyHomeGame.cardList[${widget.cardPoz}].cardVisible: ${MyHomeGame.cardList[widget.cardPoz].cardVisible}");
+              print("MyHomeGame.cardList[${MyHomeGame.openCard.cardPoz}].cardVisible: ${MyHomeGame.cardList[MyHomeGame.openCard.cardPoz].cardVisible}");
               MyHomeGame.openCard.cardPoz = -1;
             } else {
               MyHomeGame.cardList[widget.cardPoz].cardActive = false;
               MyHomeGame.cardList[MyHomeGame.openCard.cardPoz].cardActive =
               false;
+              print("MyHomeGame.cardList[${widget.cardPoz}].cardActive: ${MyHomeGame.cardList[widget.cardPoz].cardActive}");
+              print("MyHomeGame.cardList[${MyHomeGame.openCard.cardPoz}].cardActive: ${MyHomeGame.cardList[MyHomeGame.openCard.cardPoz].cardActive}");
+
             }
           }
         }
