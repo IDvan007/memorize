@@ -11,32 +11,55 @@ class MyHomeGame extends StatefulWidget {
   static int levelGame = 0;
   static List<MyCard> cardList=[];
   static List <String> cardIcons = []; //shuffled Icons of Cards
+  // static const List<String> iconList = [
+  //   '\u{1F680}',
+  //   '\u{1F681}',
+  //   '\u{1F68C}',
+  //   '\u{1F682}',
+  //   '\u{1F6F8}',
+  //   '\u{1F6F0}',
+  //   '\u{1F6A0}',
+  //   '\u{1F6E9}',
+  //   '\u{1F6A2}',
+  //   '\u{1F6F6}',
+  //   '\u{1FA82}',
+  //   '\u{1F6B4}',
+  //   '\u{1F686}',
+  //   '\u{1F691}',
+  //   '\u{1F692}',
+  //   '\u{1F694}',
+  //   '\u{1F3CD}',
+  //   '\u{1F6F4}',
+  //   '\u{1F6B2}',
+  //   '\u{1F6F5}',
+  //   '\u{1F3CE}',
+  //   '\u{1F69C}',
+  //   '\u{1F69A}',
+  //   '\u{1F697}',
+  //   '\u{1F695}'
+  // ];
+
   static const List<String> iconList = [
-    '\u{1F680}',
-    '\u{1F681}',
-    '\u{1F68C}',
-    '\u{1F682}',
-    '\u{1F6F8}',
-    '\u{1F6F0}',
-    '\u{1F6A0}',
-    '\u{1F6E9}',
-    '\u{1F6A2}',
-    '\u{1F6F6}',
-    '\u{1FA82}',
-    '\u{1F6B4}',
-    '\u{1F686}',
-    '\u{1F691}',
-    '\u{1F692}',
-    '\u{1F694}',
-    '\u{1F3CD}',
-    '\u{1F6F4}',
-    '\u{1F6B2}',
-    '\u{1F6F5}',
-    '\u{1F3CE}',
-    '\u{1F69C}',
-    '\u{1F69A}',
-    '\u{1F697}',
-    '\u{1F695}'
+    'assets/anc/aspirin.jpg',
+    'assets/anc/citramon.jpg',
+    'assets/anc/emkost.jpg',
+    'assets/anc/gematogen.jpg',
+    'assets/anc/korvalment.jpg',
+    'assets/anc/nimesil.jpg',
+    'assets/anc/pankreatin.jpg',
+    'assets/anc/plastir.jpg',
+    'assets/anc/shpric.jpg',
+    'assets/anc/valeriana.jpg'
+  ];
+  static const List<String> iconListBodya = [
+    'assets/Bodya/1.jpg',
+    'assets/Bodya/2.jpg',
+    'assets/Bodya/3.jpg',
+    'assets/Bodya/4.jpg',
+    'assets/Bodya/5.jpg',
+    'assets/Bodya/6.jpg',
+    'assets/Bodya/7.jpg',
+    'assets/Bodya/8.jpg'
   ];
 
   @override

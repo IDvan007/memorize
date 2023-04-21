@@ -24,11 +24,12 @@ class MyCard extends StatefulWidget {
 
 class _MyCardState extends State<MyCard> {
   int tempPoz=0;
+
   void _handleTap() {
     //setState(() { // this call will not work with callback, I don't know why as I said previously
       print("Card was taped!");
       print("openCard.cardPoz: ${MyHomeGame.openCardPoz}");
-      if (MyHomeGame.cardList[widget.cardPoz].cardVisible == true) {
+      if (MyHomeGame.cardList[widget.cardPoz].cardVisible == true && MyHomeGame.onPreview == false ) {
         if (MyHomeGame.openCardPoz == -1) { // first card selected, posision stored
           MyHomeGame.openCardPoz = widget.cardPoz;
           print("widget.cardPoz: ${widget.cardPoz}");
@@ -115,15 +116,12 @@ class _MyCardState extends State<MyCard> {
                 : Border.all(width: 3, color: Colors.white),
             borderRadius: BorderRadius.circular(12),
           ),
-          child: Align(
-            child: Text(
-                MyHomeGame.cardList[widget.cardPoz].cardVisible
-                    ? MyHomeGame.cardList[widget.cardPoz].cardActive
-                    ? MyHomeGame.cardList[widget.cardPoz].myIcon
-                    : ' '
-                    : ' ',
-                style: const TextStyle(fontSize: 25)),
-          ),
+
+          child: MyHomeGame.cardList[widget.cardPoz].cardVisible
+               ? MyHomeGame.cardList[widget.cardPoz].cardActive
+               ? Image.asset(MyHomeGame.cardList[widget.cardPoz].myIcon)
+               : const Text(' ')
+               : const Text(' '),
         ),
       ),
     );

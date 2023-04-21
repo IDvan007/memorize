@@ -6,11 +6,13 @@ class DifficultySelection  extends StatefulWidget {
   Function() notifyParent; // this variable will store callback link
   DifficultySelection({super.key , required this.notifyParent});
 
+
 @override
 State<DifficultySelection> createState() => _DifficultySelectionState();
 }
 
 class _DifficultySelectionState extends State<DifficultySelection> {
+  bool bogDanka=false;
 
 @override
 Widget build(BuildContext context) {
@@ -39,6 +41,8 @@ return Scaffold(
                   ElevatedButton(onPressed: onPressedMedium, child: const Text("Medium level")),
                   const SizedBox(height: 50),
                   ElevatedButton(onPressed: onPressedHard, child: const Text("Hard level")),
+                  const SizedBox(height: 50),
+                  ElevatedButton(onPressed: onPressedBodya, child: const Text("Bogdanka Edition)))")),
                 ],
               ),
             ),
@@ -82,6 +86,16 @@ return Scaffold(
 
   }
 
+  void onPressedBodya() {
+    MyHomeGame.onGame = true;
+    MyHomeGame.levelGame =16 ;
+    print('MyHomeGame.onGame  ${MyHomeGame.onGame}');
+    bogDanka=true;
+    prepearLevel();
+    widget.notifyParent();
+    onPreview();
+  }
+
 void onPreview(){
   print('MyHomeGame.onPreview  ${MyHomeGame.onPreview}');
   if (MyHomeGame.onPreview) {
@@ -95,10 +109,16 @@ void onPreview(){
   }}
 
 void prepearLevel(){
-
-  for (int i=0; i<MyHomeGame.levelGame/2; i++){
-    MyHomeGame.cardIcons.add(MyHomeGame.iconList[i]);
-    MyHomeGame.cardIcons.add(MyHomeGame.iconList[i]);
+  if (bogDanka) {
+    for (int i=0; i<MyHomeGame.levelGame/2; i++){
+      MyHomeGame.cardIcons.add(MyHomeGame.iconListBodya[i]);
+      MyHomeGame.cardIcons.add(MyHomeGame.iconListBodya[i]);
+     }
+  }else{
+    for (int i=0; i<MyHomeGame.levelGame/2; i++){
+      MyHomeGame.cardIcons.add(MyHomeGame.iconList[i]);
+      MyHomeGame.cardIcons.add(MyHomeGame.iconList[i]);
+   }
   }
   MyHomeGame.cardIcons.shuffle();//  shuffle Icons
   for (int i=0; i<MyHomeGame.cardIcons.length;i++){ // here we fill cardList with default cards
