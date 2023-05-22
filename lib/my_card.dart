@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'home_game.dart';
 
 class MyCard extends StatefulWidget {
@@ -58,6 +57,7 @@ class _MyCardState extends State<MyCard> {
                 print("MyHomeGame.cardList[${widget.cardPoz}].cardVisible: ${MyHomeGame.cardList[widget.cardPoz].cardVisible}");
                 print("MyHomeGame.cardList[$tempPoz].cardVisible: ${MyHomeGame.cardList[tempPoz].cardVisible}");
                 widget.notifyParent();
+                MyHomeGame.cardsCount--;
               });
 
              // });
@@ -126,4 +126,5 @@ class _MyCardState extends State<MyCard> {
       ),
     );
   }
+
 }

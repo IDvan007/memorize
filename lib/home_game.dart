@@ -9,8 +9,10 @@ class MyHomeGame extends StatefulWidget {
   static bool onGame= false;
   static bool onPreview= true;  // show cards opened some seconds
   static int levelGame = 0;
+  static int cardsCount = 0;
   static List<MyCard> cardList=[];
   static List <String> cardIcons = []; //shuffled Icons of Cards
+  static int timerSecLeft=7;//preview 7 sec
   // static const List<String> iconList = [
   //   '\u{1F680}',
   //   '\u{1F681}',
@@ -62,6 +64,7 @@ class MyHomeGame extends StatefulWidget {
     'assets/Bodya/8.jpg'
   ];
 
+
   @override
   State<MyHomeGame> createState() => _MyHomeGameState();
 }
@@ -77,8 +80,7 @@ class _MyHomeGameState extends State<MyHomeGame> {
 
   // this function does nothing but refresh parent UI, all gridview with cards in it
   void refresh(){
-    setState(() {
-    });
+    setState(() {});
   }
 
   @override
@@ -89,19 +91,27 @@ class _MyHomeGameState extends State<MyHomeGame> {
 
   @override
   Widget build(BuildContext context) {
-    return MyHomeGame.onGame ? Scaffold(
+    return  MyHomeGame.onGame ? MyHomeGame.cardsCount==0 ? DialogExample(notifyParent: refresh,) : Scaffold(
       appBar: AppBar(
         centerTitle: true,
         title: Row(mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            const SizedBox(width: 6,),
+            SizedBox(
+              child: Text(MyHomeGame.timerSecLeft.toString(),
+                  style: const TextStyle(
+                      fontSize: 24, color: Colors.red, fontWeight: FontWeight.w800),
+                  textAlign: TextAlign.center),
+            ),
+            const SizedBox(width: 6,),
             const SizedBox(
               child: Text('Memorize game',
                     style: TextStyle(
-                fontSize: 28, color: Colors.black, fontWeight: FontWeight.w800),
+                fontSize: 24, color: Colors.blue, fontWeight: FontWeight.w800),
                     textAlign: TextAlign.center),
             ),
-            const SizedBox(width: 20,),
-            ElevatedButton(onPressed:  onRestart, child: const Text('Restart'),)
+            const SizedBox(width: 6,),
+            ElevatedButton(onPressed: onRestart, child: const Text('Restart'),)
           ],
         ),
         backgroundColor: Colors.white,
@@ -142,19 +152,20 @@ class _MyHomeGameState extends State<MyHomeGame> {
         ),
       ),
     )
-        :  DifficultySelection(notifyParent: refresh,);
+       :  DifficultySelection(notifyParent: refresh,);
   }
 
   void onRestart() {
-
-    setState(() {
-      MyHomeGame.openCardPoz = -1; //Position opened first card
-      MyHomeGame.onGame= false;
-      MyHomeGame.onPreview= true;
-      MyHomeGame.cardList=[];
-      MyHomeGame.cardIcons = [];
-    });
-
+    if (!MyHomeGame.onPreview) {
+      setState(() {
+        MyHomeGame.openCardPoz = -1; //Position opened first card
+        MyHomeGame.onGame = false;
+        MyHomeGame.onPreview = true;
+        MyHomeGame.cardList = [];
+        MyHomeGame.cardIcons = [];
+        MyHomeGame.timerSecLeft = 7;
+      });
+    }
     // for (int i=0; i<MyHomeGame.levelGame/2; i++){
     //   MyHomeGame.cardIcons.add(MyHomeGame.iconList[i]);
     //   MyHomeGame.cardIcons.add(MyHomeGame.iconList[i]);

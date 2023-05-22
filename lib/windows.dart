@@ -1,6 +1,43 @@
 import 'package:flutter/material.dart';
 import 'package:memorize/home_game.dart';
 import 'package:memorize/my_card.dart';
+import 'dart:async';
+
+
+class DialogExample extends StatefulWidget {
+  Function() notifyParent; // this variable will store callback link
+  DialogExample({super.key, required this.notifyParent});
+  @override
+  State<DialogExample> createState() => _DialogExampleState();
+}
+
+
+class _DialogExampleState extends State<DialogExample> {
+
+  void onRestart() {
+    MyHomeGame.openCardPoz = -1; //Position opened first card
+    MyHomeGame.onGame = false;
+    MyHomeGame.onPreview = true;
+    MyHomeGame.cardList = [];
+    MyHomeGame.cardIcons = [];
+    MyHomeGame.timerSecLeft = 7;
+    widget.notifyParent();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return  AlertDialog(
+      title: const Text('You WIN!!!', textAlign: TextAlign.center,),
+      content:  Text('Your time is ${MyHomeGame.timerSecLeft} seconds',textAlign: TextAlign.center, ),
+      actions:  <Widget>[
+        TextButton(
+          onPressed:onRestart,
+          child: const Center(child: Text('OK')),
+        ),
+      ],
+    );
+  }
+}
 
 class _BeautifulButton extends StatelessWidget {
   Function() onPressed;
@@ -145,6 +182,7 @@ class _DifficultySelectionState extends State<DifficultySelection> {
   void onPressedEasy() {
     MyHomeGame.onGame = true;
     MyHomeGame.levelGame = 12;
+    MyHomeGame.cardsCount = 6;
     print('MyHomeGame.onGame  ${MyHomeGame.onGame}');
     prepearLevel();
     widget.notifyParent();
@@ -154,6 +192,7 @@ class _DifficultySelectionState extends State<DifficultySelection> {
   void onPressedMedium() {
     MyHomeGame.onGame = true;
     MyHomeGame.levelGame = 16;
+    MyHomeGame.cardsCount = 8;
     print('MyHomeGame.onGame  ${MyHomeGame.onGame}');
     prepearLevel();
     widget.notifyParent();
@@ -163,6 +202,7 @@ class _DifficultySelectionState extends State<DifficultySelection> {
   void onPressedHard() {
     MyHomeGame.onGame = true;
     MyHomeGame.levelGame = 20;
+    MyHomeGame.cardsCount = 10;
     print('MyHomeGame.onGame  ${MyHomeGame.onGame}');
     prepearLevel();
     widget.notifyParent();
@@ -172,6 +212,7 @@ class _DifficultySelectionState extends State<DifficultySelection> {
   void onPressedBodya() {
     MyHomeGame.onGame = true;
     MyHomeGame.levelGame = 16;
+    MyHomeGame.cardsCount = 8;
     print('MyHomeGame.onGame  ${MyHomeGame.onGame}');
     bogDanka = true;
     prepearLevel();
@@ -179,17 +220,44 @@ class _DifficultySelectionState extends State<DifficultySelection> {
     onPreview();
   }
 
+  void _startCountDown(){
+    Timer.periodic(const Duration(seconds: 1) ,  (timer) {
+        if (MyHomeGame.timerSecLeft>0) {
+          MyHomeGame.timerSecLeft--;
+        }
+        else{
+          timer.cancel();
+        }
+        widget.notifyParent();
+    });
+  }
+
+  void _startCountUp(){
+    Timer.periodic(const Duration(seconds: 1) ,  (timer) {
+        if (!MyHomeGame.onPreview && MyHomeGame.cardsCount > 0) {
+          MyHomeGame.timerSecLeft++;
+        }
+        else{
+          timer.cancel();
+        }
+        widget.notifyParent();
+    });
+  }
+
   void onPreview() {
     print('MyHomeGame.onPreview  ${MyHomeGame.onPreview}');
     if (MyHomeGame.onPreview) {
+      _startCountDown();
       print('Future.delayed Started   7 Sec');
       Future.delayed(const Duration(seconds: 7), () {
         MyHomeGame.onPreview = false;
         for (var element in MyHomeGame.cardList) {
           element.cardActive = false;
         }
+
         widget.notifyParent();
         print('Future.delayed Ended');
+        _startCountUp();
       });
     }
   }
